@@ -1,3 +1,6 @@
 redis/data/
 mysql/data/
 php/www/
+ssl-nginx-proxy/data/certs/
+ssl-nginx-proxy/data/html/
+ssl-nginx-proxy/data/vhost.d/
