@@ -13,6 +13,8 @@ RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include --with-jpeg-dir
 RUN docker-php-ext-install pdo pdo_mysql
 RUN docker-php-ext-install mysql mysqli
 
+RUN pecl install redis && docker-php-ext-enable redis
+
 WORKDIR /root
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
 RUN php composer-setup.php
@@ -20,5 +22,6 @@ RUN php -r "unlink('composer-setup.php');" && cp composer.phar /usr/local/bin/co
 RUN chmod 755 /usr/local/bin/composer
 
 COPY php.ini /usr/local/etc/php
+COPY apache2 /etc/apache2
 
 WORKDIR /var/www/html
